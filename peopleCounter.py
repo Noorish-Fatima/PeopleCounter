@@ -37,6 +37,7 @@ while True:
     imgRegion=cv2.bitwise_and(img,mask)
 
     imgGraphic=cv2.imread("graphics.png",cv2.IMREAD_UNCHANGED)
+  #if the video is having mismatch issues
     #if imgGraphic.shape[2] == 3:
         #imgGraphic = cv2.cvtColor(imgGraphic, cv2.COLOR_BGR2BGRA)
     img=cvzone.overlayPNG(img,imgGraphic,(1370, 360))
@@ -46,27 +47,19 @@ while True:
         boxes=r.boxes
         for box in boxes:
             # OpenCV
-
-            #bounding box
+               #bounding box
             x1,y1,x2,y2=box.xyxy[0]
             x1,y1,x2,y2=int(x1),int(y1),int(x2),int(y2)
             #print(x1,y1,x2,y2)
-            #cv2.rectangle(img,(x1,y1),(x2,y2),(255,0,255),3)
 
             # cvzone
             w,h=x2-x1,y2-y1
             #confidence
             conf=math.ceil((box.conf[0]*100))/100
-            #cvzone.putTextRect(img,f'{conf}',(max(0,x1),max(35,y1)))
-
             #class name
             cls=int(box.cls[0])
             currentClass=classNames[cls]
-
             if currentClass=='person' and conf>0.3:
-                #cvzone.putTextRect(img,f'{currentClass} {conf}',(max(0,x1),max(35,y1)),scale=4,thickness=2,offset=3)
-                #cvzone.cornerRect(img,(x1,y1,w,h),l=15,rt=5)
-
                 currentArray=np.array([x1,y1,x2,y2,conf])
                 detections=np.vstack((detections,currentArray))
 

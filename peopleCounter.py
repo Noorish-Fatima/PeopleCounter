@@ -36,7 +36,7 @@ while True:
     success,img=cap.read()
     imgRegion=cv2.bitwise_and(img,mask)
 
-    imgGraphic=cv2.imread("Project/PeopleCounter/graphics.png",cv2.IMREAD_UNCHANGED)
+    imgGraphic=cv2.imread("graphics.png",cv2.IMREAD_UNCHANGED)
     #if imgGraphic.shape[2] == 3:
         #imgGraphic = cv2.cvtColor(imgGraphic, cv2.COLOR_BGR2BGRA)
     img=cvzone.overlayPNG(img,imgGraphic,(1370, 360))

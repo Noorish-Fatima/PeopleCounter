@@ -7,9 +7,9 @@ import math
 from IPython.display import display, Image, clear_output
 from sort import *
 
-cap=cv2.VideoCapture("Videos/people.mp4")
+cap=cv2.VideoCapture("people.mp4")
 
-model=YOLO("./YoloWeights/yolov8n.pt")
+model=YOLO("yolov8n.pt")
 
 classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat",
               "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat",
@@ -23,7 +23,7 @@ classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "trai
               "teddy bear", "hair drier", "toothbrush"
               ]
 
-mask=cv2.imread("Project/PeopleCounter/PeopleMask.png")
+mask=cv2.imread("PeopleMask.png")
 
 # tracking
 tracker=Sort(max_age=20,min_hits=2,iou_threshold=0.3)
